@@ -1,0 +1,115 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "katex/dist/katex.min.css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(0.99 0.003 95);
+  --foreground: oklch(0.2 0.02 270);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.2 0.02 270);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.2 0.02 270);
+  --primary: oklch(0.45 0.18 275);
+  --primary-foreground: oklch(0.98 0.01 275);
+  --secondary: oklch(0.96 0.01 275);
+  --secondary-foreground: oklch(0.25 0.04 275);
+  --muted: oklch(0.96 0.005 270);
+  --muted-foreground: oklch(0.5 0.02 270);
+  --accent: oklch(0.95 0.025 275);
+  --accent-foreground: oklch(0.25 0.06 275);
+  --destructive: oklch(0.58 0.22 27);
+  --border: oklch(0.91 0.01 270);
+  --input: oklch(0.91 0.01 270);
+  --ring: oklch(0.6 0.15 275);
+}
+
+.dark {
+  --background: oklch(0.16 0.015 270);
+  --foreground: oklch(0.96 0.005 270);
+  --card: oklch(0.2 0.02 270);
+  --card-foreground: oklch(0.96 0.005 270);
+  --popover: oklch(0.2 0.02 270);
+  --popover-foreground: oklch(0.96 0.005 270);
+  --primary: oklch(0.72 0.14 275);
+  --primary-foreground: oklch(0.16 0.02 275);
+  --secondary: oklch(0.27 0.025 270);
+  --secondary-foreground: oklch(0.96 0.005 270);
+  --muted: oklch(0.27 0.02 270);
+  --muted-foreground: oklch(0.7 0.02 270);
+  --accent: oklch(0.3 0.04 275);
+  --accent-foreground: oklch(0.96 0.005 270);
+  --destructive: oklch(0.7 0.19 22);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 16%);
+  --ring: oklch(0.6 0.12 275);
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+}
+
+/* Rendered note typography */
+.math-prose {
+  line-height: 1.75;
+  font-size: 1rem;
+}
+.math-prose h1 { font-size: 1.75rem; font-weight: 700; margin: 1.4em 0 0.5em; }
+.math-prose h2 { font-size: 1.4rem; font-weight: 650; margin: 1.3em 0 0.5em; }
+.math-prose h3 { font-size: 1.15rem; font-weight: 600; margin: 1.2em 0 0.4em; }
+.math-prose p { margin: 0.7em 0; }
+.math-prose ul { list-style: disc; padding-left: 1.5em; margin: 0.7em 0; }
+.math-prose ol { list-style: decimal; padding-left: 1.5em; margin: 0.7em 0; }
+.math-prose blockquote {
+  border-left: 3px solid var(--primary);
+  background: var(--accent);
+  padding: 0.4em 1em;
+  margin: 1em 0;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+.math-prose code {
+  background: var(--muted);
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+.math-prose pre { background: var(--muted); padding: 1em; border-radius: var(--radius-md); overflow-x: auto; }
+.math-prose pre code { background: none; padding: 0; }
+.math-prose table { border-collapse: collapse; margin: 1em 0; }
+.math-prose th, .math-prose td { border: 1px solid var(--border); padding: 0.4em 0.8em; }
+.math-prose th { background: var(--muted); }
+.math-prose hr { border: 0; border-top: 1px solid var(--border); margin: 1.5em 0; }
+.math-prose .katex-display { overflow-x: auto; overflow-y: hidden; padding: 0.3em 0; }
